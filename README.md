@@ -5,4 +5,4 @@
 There is also a completely integrated instant search feature to allow the user to search through the locations marked on the map.
 # How to Run
 * To run this application download all of the files and open the index.html file. For this application to run properly you must be connected to the internet.
-* To view the interactive map on github pages go to https://sai3010.github.io/Neighbor-Hood-Map
+* To view the interactive map on github pages go to https://sai3010.github.io/-Neighbour-Hood-Map-2
