@@ -22,8 +22,8 @@
 </head>
 <body>
   <div class="search-area" id="search-area">
-    <input class="search-input" placeholder="Search for Places" type="text" name="q" data-bind="value: query, valueUpdate: 'keyup'">
-    <ul class="location-list" data-bind="visible:query, template: {name: 'location', foreach: search}">
+    <input class="search-input" placeholder="Search for Places" type="text" name="q" data-bind="textInput: query">
+    <ul class="location-list" data-bind="template: {name: 'location', foreach: search}">
     </ul>
   </div>
   <div class="map-canvas" id="gmap"></div>

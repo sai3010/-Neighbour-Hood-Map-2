@@ -75,7 +75,7 @@ function Location(title, lng, lat, venueId) {
 // Contains all the locations and search function.
 var locationsModel = {
 
-    locations: [
+    locations:ko.observableArray( [
         new Location('By 2 coffee', 12.9648003, 77.5389259, '51d8034a498e44075a4a92fc'),
         new Location('Captain\'s Food Court', 12.9190615, 77.5183429, '52b4215211d2e0e5ef99e09b'),
         new Location('Cafe Coffee Day', 12.9190613, 77.5117768, '4c61410f924b76b0ae8afab9'),
@@ -84,19 +84,20 @@ var locationsModel = {
         new Location('Chung Wah', 12.9250658, 77.5486708, '4bd2c60cb221c9b62145d8d0'),
         new Location('Royal Andhra Spice', 12.9057565, 77.5188221, '4de4d44ec65b7a3e21522847'),
         new Location('Pizza Hut', 12.9057559, 77.5035012, '4e7a0e46aeb79f7dabc48535')
-    ],
+    ]),
     query: ko.observable(''),
 };
 
 
 // Search function for filtering through the list of locations based on the name of the location.
-locationsModel.search = ko.dependentObservable(function() {
+locationsModel.search = ko.computed(function() {
     var self = this;
-    var search = this.query().toLowerCase();
+    var query = this.query().toLowerCase();
 
-    return ko.utils.arrayFilter(self.locations, function(location) {
-        return location.title.toLowerCase().indexOf(search) >= 0;
-        marker.setVisible(true);
+    return ko.utils.arrayFilter(self.locations(), function(location) {
+    	var matched=location.title.toLowerCase().indexOf(query) !=-1;
+    	 location.marker.setVisible(matched);
+        return matched;
     });
 }, locationsModel);
 
