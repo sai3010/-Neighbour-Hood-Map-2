@@ -39,6 +39,7 @@ function Location(title, lng, lat, venueId) {
             self.content = '<p><b>Error in retrieving comments!!</b></p>';
             console.log('getJSON request failed! ' + textStatus);
         });
+
     }();
 
     this.infowindow = new google.maps.InfoWindow();
@@ -53,7 +54,8 @@ function Location(title, lng, lat, venueId) {
         icon: self.icon
     });
 
-   
+
+
 
     // Opens the info window for the location marker.
     this.openInfowindow = function() {
@@ -71,11 +73,11 @@ function Location(title, lng, lat, venueId) {
 
 
 };
- 
+
 // Contains all the locations and search function.
 var locationsModel = {
 
-    locations:ko.observableArray( [
+    locations: ko.observableArray([
         new Location('By 2 coffee', 12.9648003, 77.5389259, '51d8034a498e44075a4a92fc'),
         new Location('Captain\'s Food Court', 12.9190615, 77.5183429, '52b4215211d2e0e5ef99e09b'),
         new Location('Cafe Coffee Day', 12.9190613, 77.5117768, '4c61410f924b76b0ae8afab9'),
@@ -95,8 +97,8 @@ locationsModel.search = ko.computed(function() {
     var query = this.query().toLowerCase();
 
     return ko.utils.arrayFilter(self.locations(), function(location) {
-    	var matched=location.title.toLowerCase().indexOf(query) !=-1;
-    	 location.marker.setVisible(matched);
+        var matched = location.title.toLowerCase().indexOf(query) != -1;
+        location.marker.setVisible(matched);
         return matched;
     });
 }, locationsModel);
