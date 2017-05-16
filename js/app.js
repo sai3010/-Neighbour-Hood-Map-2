@@ -72,10 +72,10 @@ function toggleBounce(marker) {
     if (marker.getAnimation() !== null) {
         marker.setAnimation(null);
     } else {
-        marker.setAnimation(google.maps.Animation.Bounce);
+        marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
             marker.setAnimation(null);
-        }, 10000);
+        }, 1000);
     }
 }
 
